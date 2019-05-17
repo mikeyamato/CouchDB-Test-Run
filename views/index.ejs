@@ -1,0 +1,28 @@
+<!-- embedded js -->
+
+<h3>Add Customers</h3>
+<form method="post" action="/customer/add">
+	<input type="text" name="name" placeholder="name">
+	<input type="text" name="email" placeholder="email">
+	<input type="text" name="phone" placeholder="phone">
+	<input type="submit" value="submit">
+</form>
+
+
+<h3>Customers</h3>
+<ul>
+	<h2><%= customers[0].value.address.state %></h2>
+	<% customers.forEach(customer => { %>
+		<li>
+			<h4><%= customer.value.name %></h4>
+			<ul>
+				<li><%= customer.value.email %></li>
+				<li><%= customer.value.phone %></li>
+			</ul>
+		</li>
+		<form method="post" action="/customer/delete/<%= customer.id %>">
+			<input type="hidden" name="rev" value="<%= customer.value.rev %>">
+			<input type="submit" value="delete">
+		</form>
+	<% }); %>
+</ul>
