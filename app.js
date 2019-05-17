@@ -9,8 +9,8 @@ const port = process.env.PORT || 3000
 // node-couchdb instance with default options
 const couch = new NodeCouchDb({
 	auth: {
-		user: 'admin',
-		pass: 'password'
+		user: process.env.couchUser,
+		pass: process.env.couchPass
 	}
 });
 
